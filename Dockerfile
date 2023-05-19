@@ -129,6 +129,8 @@ FROM sylius_nginx AS sylius_nginx_bunnyshell
 
 COPY docker/nginx/conf.d/bunnyshell.conf /etc/nginx/conf.d/default.conf
 
+RUN set -eux;
+
 FROM sylius_php_prod AS sylius_php_dev
 
 COPY docker/php/dev/php.ini        $PHP_INI_DIR/php.ini
