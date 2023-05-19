@@ -86,15 +86,17 @@ services:
     container_name: nginx
     build:
       context: .
-      target: sylius_nginx
+      target: sylius_nginx_bunnyshell
+    environment:
+      - FPM_HOST=php
     depends_on:
       - php
       - node # to ensure correct build order
     volumes:
-      - ./public:/srv/sylius/public:ro
+      - ./public:/srv/sylius/public:rw
       # if you develop on Linux, you may use a bind-mounted host directory instead
       # - ./public/media:/srv/sylius/public/media:ro
-      - public-media:/srv/sylius/public/media:ro,nocopy
+      - public-media:/srv/sylius/public/media:rw
     ports:
       - "${HTTP_PORT:-80}:80"
 
