@@ -139,6 +139,7 @@ COPY docker/php/dev/opcache.ini    $PHP_INI_DIR/conf.d/opcache.ini
 WORKDIR /srv/sylius
 
 ENV APP_ENV=dev
+ENV APP_DEBUG=1
 
 COPY .env.test .env.test_cached ./
 
