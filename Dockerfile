@@ -172,6 +172,6 @@ FROM sylius_php_dev AS sylius_migrations_dev
 COPY docker/migrations/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
 RUN chmod +x /usr/local/bin/docker-entrypoint
 
-RUN composer dump-autoload --classmap-authoritative
+RUN composer dump-autoload --classmap-authoritative --optimize
 
 ENTRYPOINT ["docker-entrypoint"]
