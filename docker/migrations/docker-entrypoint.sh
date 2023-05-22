@@ -3,6 +3,9 @@ set -e
 
 attempt_left=20
 
+# dump autoload in entrypoint lso due to weird build cache issues
+composer dump-autoload --classmap-authoritative --optimize
+
 until php bin/console doctrine:query:sql "select 1" >/dev/null 2>&1;
 do
     attempt_left=$((attempt_left-1))
