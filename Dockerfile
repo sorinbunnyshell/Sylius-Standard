@@ -146,6 +146,12 @@ RUN set -eux; \
     composer install --prefer-dist --no-autoloader --no-interaction --no-scripts --no-progress; \
     composer clear-cache
 
+FROM sylius_php_dev AS sylius_php_dev_bunnyshell
+
+# package.json is needed by the `node` container, for yarn watch
+# `php` and `node` containers share the same folder (the one from `php` container)
+COPY . .
+
 FROM sylius_php_prod AS sylius_cron
 
 RUN set -eux; \
